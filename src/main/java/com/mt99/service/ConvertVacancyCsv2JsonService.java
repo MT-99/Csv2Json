@@ -1,7 +1,5 @@
 package com.mt99.service;
 
-import java.io.File;
-
 import com.mt99.service.export.JsonDocumentExporter;
 import com.mt99.service.extract.CsvExtractor;
 import com.mt99.service.model.Vacancy;
@@ -31,7 +29,9 @@ public class ConvertVacancyCsv2JsonService extends ConvertService<Vacancy> {
 
 		//	Initialize the JSON Document Exporter
 		JsonDocumentExporter<Vacancy> exporter	= new JsonDocumentExporter<Vacancy>();
-		exporter.setDestinationFile(new File(outputPath));
+	//		To prevent file path traversal attacks
+	//	exporter.setDestinationFile(new File(outputPath));
+		exporter.setDestinationFile(java.nio.file.FileSystems.getDefault().getPath(outputPath).toFile());
 		setExporter(exporter);
 	}	// init()
 }	// class ConvertVacancyCsv2JsonService

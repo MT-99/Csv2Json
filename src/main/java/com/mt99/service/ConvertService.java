@@ -1,6 +1,5 @@
 package com.mt99.service;
 
-import java.io.File;
 import java.util.List;
 
 import com.mt99.service.export.Exportable;
@@ -51,7 +50,9 @@ public abstract class ConvertService<T> {
 			return false;
 
 		try {
-			List<T> extractedList	= extractor.extract(new File(inputPath));
+		//		To prevent file path traversal attacks
+		//	List<T> extractedList	= extractor.extract(new File(inputPath));
+			List<T> extractedList	= extractor.extract(java.nio.file.FileSystems.getDefault().getPath(inputPath).toFile());
 			List<T> processedList	= processor.process(extractedList);
 			return exporter.export(processedList);
 		}
