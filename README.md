@@ -4,14 +4,14 @@ Convert CSV File to JSON Document File for list of Vacancy by excluding missing 
 
 # Assumptions
 The given CSV has a header and the following columns with comma separated:
-Column Name	Data Type
------------	---------
-creator		String
-break		Number
-description	String
-start		String
-end			String
-shiftType	String
+| Column Name	| Data Type		|
+|---------------|---------------|
+|creator		|String			|
+|break			|Number			|
+|description	|String			|
+|start			|String			|
+|end			|String			|
+|shiftType		|String			|
 
 Compile: Java 1.8.
 Runtime: Java 1.8.
